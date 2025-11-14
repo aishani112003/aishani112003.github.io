@@ -1,0 +1,22 @@
+title: "Aishani Pathak"
+description: "Machine Learning • TDA • Robotics • Secure AI"
+theme: null
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Navigation bar
+navbar:
+  - name: "Home"
+    link: "/"
+  - name: "Research"
+    link: "/research"
+  - name: "Publications"
+    link: "/publications"
+  - name: "Experience"
+    link: "/experience"
+  - name: "Teaching"
+    link: "/teaching"
+  - name: "Projects"
+    link: "/projects"
+
