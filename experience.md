@@ -7,7 +7,7 @@ title: Experience
 
 ## Geometric Media Lab (ASU)
 - Researcher in representation learning  
-- Worked on TDA, KD, scene graphs, and secure AI
+- Worked on TDA, KD, time-series representation, scene graphs
 
 ## Los Alamos National Laboratory
 - Dynamic Summer School researcher  
