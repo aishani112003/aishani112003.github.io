@@ -6,27 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+
+    /* ======= GLOBAL DARK THEME ======= */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
-      background: #fafafa;
-      color: #222;
+      background: #0c0c0c;        /* near-black */
+      color: #e5e5e5;             /* soft white */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* HEADER */
+    /* ======= HEADER ======= */
     header {
-      background: #101010;
-      color: white;
+      background: #000;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #333;
     }
 
     header div {
       font-size: 24px;
       font-weight: 700;
+      color: #fff;
     }
 
     nav a {
@@ -36,23 +38,57 @@
       font-weight: 500;
       transition: 0.2s;
     }
-
     nav a:hover {
       color: #fff;
     }
 
-    /* MAIN CONTAINER */
+    /* ======= MAIN CONTAINER ======= */
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 50px 20px;
-      background: #fff;
-      border-radius: 8px;
+      background: #111;
+      border-radius: 12px;
       margin-top: 40px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+      box-shadow: 0 0 25px rgba(255,255,255,0.05);
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
     }
 
-    a { color: #0070f3; }
+    h1 {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    h2 {
+      color: #fff;
+    }
+
+    p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    a { 
+      color: #60a6ff;     /* same academic blue used on research page */
+      text-decoration: none;
+    }
+    a:hover {
+      color: #8bc0ff;
+    }
+
+    /* ======= PROFILE IMAGE ======= */
+    .profile-img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 50%;
+      border: 3px solid #333;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
+      object-fit: cover;
+    }
 
   </style>
 </head>
@@ -68,52 +104,40 @@
   </nav>
 </header>
 
-<div class="container" style="display: flex; gap: 40px; align-items: flex-start;">
+<div class="container">
 
   <!-- LEFT COLUMN -->
   <div style="flex: 1;">
+    <h1>Welcome!</h1>
 
-    <h1 style="font-size: 38px; font-weight: 700; margin-bottom: 15px;">Welcome!</h1>
-
-    <p style="line-height: 1.6; font-size: 17px; color: #444;">
+    <p>
       I am an undergraduate senior at Arizona State University majoring in Computer Science,
       conducting research in machine learning, data representation, knowledge distillation,
       and secure AI systems. My work spans topological data analysis, robotics perception,
-      and AI for national-security–oriented applications. 
+      and AI for national-security–oriented applications.
       <br><br>
       I am currently applying to Ph.D. programs with the goal of building 
       representation-centric, geometry-aware, and robust learning systems that operate
       reliably in high-stakes environments.
     </p>
 
-    <h2 style="margin-top: 30px; font-size: 24px; font-weight: 600;">Contact</h2>
-    <p style="line-height: 1.5; font-size: 16px;">
+    <h2>Contact</h2>
+    <p>
       📧 <a href="mailto:aishanipathak@asu.edu">aishanipathak@asu.edu</a><br>
-      📞 <span>+1 (xxx) xxx-xxxx</span>
+      📞 +1 (xxx) xxx-xxxx
     </p>
 
-    <h2 style="margin-top: 25px; font-size: 24px; font-weight: 600;">Links</h2>
-    <p style="line-height: 1.6; font-size: 16px;">
+    <h2>Links</h2>
+    <p>
       🔗 <a href="https://github.com/aishani112003" target="_blank">GitHub</a><br>
       🔗 <a href="https://www.linkedin.com/in/aishani-pathak/" target="_blank">LinkedIn</a><br>
       🔗 <a href="/pdfs/Aishani_Pathak_CV.pdf" target="_blank">Curriculum Vitae (CV)</a>
     </p>
-
   </div>
 
-  <!-- RIGHT COLUMN (PROFILE IMAGE) -->
+  <!-- RIGHT COLUMN -->
   <div style="flex: 0 0 260px; text-align: center;">
-    <img 
-      src="/profile.png"
-      alt="Profile Image"
-      style="
-        width: 100%;
-        max-width: 260px;
-        border-radius: 50%;
-        border: 4px solid #eee;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        object-fit: cover;
-      ">
+    <img src="/profile.png" class="profile-img" alt="Profile Image">
   </div>
 
 </div>

@@ -1,5 +1,5 @@
 title: "Aishani Pathak"
-description: "Machine Learning • TDA • Robotics • Secure AI"
+description: "Machine Learning • TDA • Robotics • Computer Vision"
 theme: null
 markdown: kramdown
 plugins:
@@ -13,10 +13,4 @@ navbar:
     link: "/research"
   - name: "Publications"
     link: "/publications"
-  - name: "Experience"
-    link: "/experience"
-  - name: "Teaching"
-    link: "/teaching"
-  - name: "Projects"
-    link: "/projects"
 
