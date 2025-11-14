@@ -6,78 +6,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+
+    /* ======= GLOBAL DARK THEME ======= */
     body {
       margin: 0;
+      background: #0c0c0c;        /* near-black, academic style */
+      color: #e5e5e5;             /* soft white for readability */
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #fafafa;
-      color: #222;
     }
 
+    a { color: #60a6ff; } /* academic blue */
+
+    /* ======= HEADER ======= */
     header {
-      background: #1a1a1a;
-      color: white;
+      background: #000;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #333;
     }
+
+    header div {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
     nav a {
-      color: white;
+      color: #ccc;
       margin-left: 20px;
       text-decoration: none;
       font-weight: 500;
+      transition: 0.2s;
     }
 
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* ======= PAGE CONTAINER ======= */
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 40px;
       text-align: center;
+      font-weight: 700;
       margin-bottom: 40px;
+      color: #fff;
     }
 
+    /* ======= PROJECT CARDS (Minimal Academic Style) ======= */
     .project-card {
-      background: white;
-      padding: 20px;
+      background: #111;
+      padding: 25px;
       border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 0.8s ease forwards;
+      margin-bottom: 35px;
+      border: 1px solid #222;
+      box-shadow: 0 0 20px rgba(255,255,255,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .project-card:nth-child(2) { animation-delay: 0.15s; }
-    .project-card:nth-child(3) { animation-delay: 0.3s; }
-    .project-card:nth-child(4) { animation-delay: 0.45s; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(255,255,255,0.05);
     }
 
     .proj-title {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      color: #fff;
     }
 
     .proj-desc {
-      line-height: 1.6;
-      margin-bottom: 15px;
+      line-height: 1.55;
+      color: #ccc;
+      margin-bottom: 18px;
     }
 
+    /* ======= POSTER IMAGES ======= */
     .proj-img {
       width: 100%;
       border-radius: 10px;
-      margin: 15px 0;
       cursor: pointer;
+      margin: 18px 0;
+      transition: 0.25s ease;
+      border: 1px solid #222;
     }
 
+    .proj-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(255,255,255,0.08);
+    }
+
+    /* ======= BUTTONS ======= */
     .btn {
       display: inline-block;
       background: #0070f3;
@@ -87,9 +114,54 @@
       text-decoration: none;
       margin-right: 10px;
       transition: 0.2s ease;
+      font-weight: 500;
     }
     .btn:hover {
       background: #005ad1;
+    }
+
+    /* ======= COLLAPSIBLE ABSTRACT ======= */
+    details {
+      background: #151515;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px solid #222;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    details[open] summary {
+      color: #fff;
+    }
+
+
+    /* ======= MODAL ======= */
+    #modal {
+      display:none;
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.92);
+      justify-content:center;
+      align-items:center;
+      z-index:1000;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #modal-img, #modal-pdf {
+      max-width:90%;
+      max-height:90%;
+      border-radius: 10px;
     }
 
   </style>
@@ -98,7 +170,7 @@
 <body>
 
 <header>
-  <div style="font-size: 22px; font-weight: bold;">Aishani Pathak</div>
+  <div>Aishani Pathak</div>
   <nav>
     <a href="/">Home</a>
     <a href="/research.html">Research</a>
@@ -110,97 +182,109 @@
 </header>
 
 <div class="container">
+
   <h1>Research</h1>
 
-  <div style="text-align:center; margin-bottom:30px;">
+  <div style="text-align:center; margin-bottom:35px;">
     <a class="btn" href="/pdfs/Aishani_Pathak_CV.pdf" download>Download CV</a>
   </div>
 
-  <!-- PROJECT 1 -->
+  <!-- TGD PROJECT -->
   <div class="project-card">
-    <div class="proj-title">Topological Guidance-Based Knowledge Distillation (TGD)</div>
+    <div class="proj-title">Topological Guidance-Based Knowledge Distillation (ICML 2024)</div>
     <div class="proj-desc">
-      I develop topology-aware model compression techniques that improve robustness in high-stakes environments.
-      My work introduces topological persistence signals to guide representation learning in student networks.
+      I develop topology-aware model compression methods using persistent homology to guide student networks.
+      Poster and paper presented at ICML 2024.
     </div>
 
- <img src="/posters/tgd.png" 
-     onclick="openPoster('/posters/tgd.png')" 
-     class="proj-img">
-
+    <img src="/pdfs/tgd.png" class="proj-img" onclick="openPoster('/pdfs/tgd.png')">
 
     <a class="btn" href="/pdfs/TGD.pdf" download>Download Paper</a>
     <a class="btn" href="https://github.com/jeunsom/TGD" target="_blank">Code</a>
+
+    <details>
+      <summary>Show Abstract</summary>
+      <p style="color:#bbb; margin-top:12px;">
+        Persistent homology reveals stable geometric features in neural activations.
+        This work uses topological signatures as privileged information to supervise
+        compact student models without requiring structural complexity.
+      </p>
+    </details>
   </div>
 
-
- <div class="project-card">
-  <div class="proj-title">Los Alamos National Laboratory Poster</div>
-  <div class="proj-desc">
-    Poster presented at the 2024 Los Alamos National Laboratory research showcase.
-  </div>
-
-  <!-- PNG poster preview -->
-  <img src="/pdfs/LANL2024.png"
-       class="proj-img"
-       onclick="openPoster('/pdfs/LANL2024.png')">
-
-  <!-- Optional: Download button -->
-  <a class="btn" href="/pdfs/LANL2024.png" download>Download Poster (PNG)</a>
-</div>
-
-<div class="project-card">
-  <div class="proj-title">Arizona State University Research Symposium</div>
-  <div class="proj-desc">
-    Poster presented at the 2024 Arizona State University research symposium.
-  </div>
-
-  <!-- PNG poster preview -->
-  <img src="/pdfs/AishaniPathakGCSPoster.png"
-       class="proj-img"
-       onclick="openPoster('/pdfs/AishaniPathakGCSPoster.png')">
-
-  <!-- Optional: Download button -->
-  <a class="btn" href="/pdfs/AishaniPathakGCSPoster.png" download>Download Poster (PNG)</a>
-</div>
-
-
-
-  <!-- PROJECT 3 -->
+  <!-- LANL POSTER -->
   <div class="project-card">
-    <div class="proj-title">Vision-Based Robotic Arm State Estimation</div>
+    <div class="proj-title">Los Alamos National Laboratory – Dynamic Summer School (2024)</div>
     <div class="proj-desc">
-      I design perception-driven learning pipelines for real-world robotics using privileged teacher signals 
-      from simulation such as joint states and end-effector pose.
+      Robust AI workflows for critical infrastructure applications.
+      Poster presented at LANL DSS 2024.
     </div>
 
-    <img src="/pdfs/Screenshot 2025-11-14 at 12.42.29 PM.png" onclick="openPoster('/posters/Screenshot 2025-11-14 at 12.42.29 PM copy.png')" class="proj-img">
+    <img src="/pdfs/LANL2024.png" class="proj-img" onclick="openPoster('/pdfs/LANL2024.png')">
 
-    <a class="btn" 
-       href="/pdfs/Vision-Based State Estimation of a Serial Manipulator.pdf"
-       download>
-       Download Paper
+    <a class="btn" href="/pdfs/LANL2024.png" download>Download Poster</a>
+
+    <details>
+      <summary>Show Abstract</summary>
+      <p style="color:#bbb; margin-top:12px;">
+        This work investigates robust AI systems for high-stakes environments, 
+        improving reliability through representation-guided learning pipelines.
+      </p>
+    </details>
+  </div>
+
+  <!-- ASU SYMPOSIUM -->
+  <div class="project-card">
+    <div class="proj-title">Arizona State University Research Symposium (2024)</div>
+    <div class="proj-desc">
+      Time-aware representation learning for gait analysis.
+      Poster presented at ASU’s annual research symposium.
+    </div>
+
+    <img src="/pdfs/AishaniPathakGCSPoster.png" class="proj-img" onclick="openPoster('/pdfs/AishaniPathakGCSPoster.png')">
+
+    <a class="btn" href="/pdfs/AishaniPathakGCSPoster.png" download>Download Poster</a>
+
+    <details>
+      <summary>Show Abstract</summary>
+      <p style="color:#bbb; margin-top:12px;">
+        This work analyzes how temporal continuity affects representation quality for human motion data.
+      </p>
+    </details>
+  </div>
+
+  <!-- ROBOTICS PROJECT -->
+  <div class="project-card">
+    <div class="proj-title">Vision-Based Robotic Arm State Estimation (IMAC 2026)</div>
+    <div class="proj-desc">
+      Perception-driven state estimation using privileged teacher signals.
+      Accepted for presentation at IMAC 2026.
+    </div>
+
+    <img src="/pdfs/Screenshot 2025-11-14 at 12.42.29 PM.png"
+         class="proj-img"
+         onclick="openPoster('/pdfs/Screenshot 2025-11-14 at 12.42.29 PM.png')">
+
+    <a class="btn" href="/pdfs/Vision-Based State Estimation of a Serial Manipulator.pdf" download>
+      Download Paper
     </a>
+
+    <details>
+      <summary>Show Abstract</summary>
+      <p style="color:#bbb; margin-top:12px;">
+        A hybrid teacher–student architecture improves real-world arm tracking by transferring structured
+        geometric cues (joint states, poses) from simulation into lightweight visual models.
+      </p>
+    </details>
   </div>
 
 </div>
 
+
 <!-- UNIVERSAL MODAL -->
-<div id="modal" style="
-  display:none; 
-  position:fixed; 
-  top:0; left:0; 
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.85);
-  justify-content:center; 
-  align-items:center; 
-  z-index:1000;">
-  
-  <!-- IMAGE VIEW -->
-  <img id="modal-img" style="max-width:90%; max-height:90%; border-radius:10px; display:none;">
-  
-  <!-- PDF VIEW -->
-  <iframe id="modal-pdf" style="width:85%; height:85%; border-radius:10px; display:none;"></iframe>
+<div id="modal" onclick="this.style.display='none'">
+  <img id="modal-img" style="display:none;">
+  <iframe id="modal-pdf" style="display:none;"></iframe>
 </div>
 
 <script>
@@ -222,10 +306,6 @@ function openPoster(path) {
     pdf.style.display = "block";
   }
 }
-
-document.getElementById("modal").onclick = function() {
-  this.style.display = "none";
-};
 </script>
 
 </body>
